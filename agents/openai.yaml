@@ -1,0 +1,6 @@
+interface:
+  display_name: "Task Checkpoint Handoff"
+  short_description: "保存未完成任务状态，核对证据后跨会话接续"
+  default_prompt: "Use $task-checkpoint-handoff to save or resume this task, reconciling current artifacts and evidence with the user's goal."
+policy:
+  allow_implicit_invocation: false
