@@ -34,6 +34,9 @@ class CheckpointCLITests(unittest.TestCase):
         self.git("config", "user.name", "Checkpoint Test")
         self.git("config", "user.email", "checkpoint-test@example.invalid")
         self.git("config", "core.filemode", "true")
+        # Fixture commits must not leave a background Git maintenance writer
+        # racing the read-only metadata assertions on newer Git versions.
+        self.git("config", "maintenance.auto", "false")
         (self.repo / "src").mkdir()
         self.source = self.repo / "src" / "module.py"
         self.source.write_text("VALUE = 1\n", encoding="utf-8")
